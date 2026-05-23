@@ -24,7 +24,8 @@ jobs:
 
       - name: Create Maven settings.xml
         run: |
-          cat > settings.xml <<EOF
+          mkdir -p ~/.m2
+          cat > ~/.m2/settings.xml <<EOF
           <settings>
             <servers>
               <server>
@@ -35,6 +36,7 @@ jobs:
             </servers>
           </settings>
           EOF
+          cp ~/.m2/settings.xml settings.xml
 
       - name: Run tests
         run: mvn test
